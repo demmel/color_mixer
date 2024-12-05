@@ -5,11 +5,11 @@ import { ColorSwatch } from "./ColorSwatch";
 
 type Props = {
   colors: string[];
-  onClick?: (color: string) => void;
+  onChoose?: (color: string) => void;
   ratio: number;
 };
 
-export function ColorTable({ colors, onClick, ratio }: Props) {
+export function ColorTable({ colors, onChoose: onClick, ratio }: Props) {
   return (
     <div>
       <div style={{ display: "flex", flexDirection: "row" }}>

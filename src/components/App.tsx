@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import "./App.css";
 import { ChromePicker } from "react-color";
-import { ColorTable } from "./ColorTable";
 import { Palette } from "./Palette";
+import { ColorTableWithRatioSlider } from "./ColorTableWithRatioSlider";
 
 function App() {
   const [baseColors, setBaseColors] = useState<string[]>([]);
   const [color, setColor] = useState<string>("#ffffff");
-  const [ratio, setRatio] = useState<number>(0.5);
 
   return (
     <div className="App">
@@ -25,18 +24,9 @@ function App() {
           <Palette colors={baseColors} />
         </div>
       </div>
-      <input
-        type="range"
-        min={0}
-        max={1}
-        step={0.01}
-        value={ratio}
-        onChange={(e) => setRatio(parseFloat(e.target.value))}
-      />
-      <ColorTable
+      <ColorTableWithRatioSlider
         colors={baseColors}
-        onClick={(color) => setBaseColors([...baseColors, color])}
-        ratio={ratio}
+        onChoose={(color) => setBaseColors([...baseColors, color])}
       />
     </div>
   );
