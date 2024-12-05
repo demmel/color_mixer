@@ -4,12 +4,13 @@ import { ColorTable } from "./ColorTable";
 type Props = {
   colors: string[];
   onChoose: (color: string) => void;
+  style?: React.CSSProperties;
 };
 
-export function ColorTableWithRatioSlider({ colors, onChoose }: Props) {
+export function ColorTableWithRatioSlider({ colors, onChoose, style }: Props) {
   const [ratio, setRatio] = useState<number>(0.5);
   return (
-    <div>
+    <div style={style}>
       <input
         type="range"
         min={0}

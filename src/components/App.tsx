@@ -15,18 +15,17 @@ function App() {
         color={color}
         onChange={({ hex }) => setColor(hex)}
       />
-      <div style={{ display: "flex", flexDirection: "row" }}>
-        <div style={{ marginRight: 16 }}>
-          <h2>Colors</h2>
-          <button onClick={() => setBaseColors([...baseColors, color])}>
-            Add color
-          </button>
-          <Palette colors={baseColors} />
-        </div>
+      <button onClick={() => setBaseColors([...baseColors, color])}>
+        Add color
+      </button>
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        <h2>Palette</h2>
+        <Palette colors={baseColors} />
       </div>
       <ColorTableWithRatioSlider
         colors={baseColors}
         onChoose={(color) => setBaseColors([...baseColors, color])}
+        style={{ marginTop: 16 }}
       />
     </div>
   );
