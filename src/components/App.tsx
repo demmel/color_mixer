@@ -2,13 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import { ChromePicker } from "react-color";
 import { ColorTable } from "./ColorTable";
-import { parseColorString } from "./utils";
 import { Palette } from "./Palette";
-
-export function shouldUseBlackForeground(hex: string): boolean {
-  const [r, g, b] = parseColorString(hex);
-  return r * 0.299 + g * 0.587 + b * 0.114 > 186;
-}
 
 function App() {
   const [baseColors, setBaseColors] = useState<string[]>([]);

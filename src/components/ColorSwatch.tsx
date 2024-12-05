@@ -1,5 +1,5 @@
 import React from "react";
-import { shouldUseBlackForeground } from "./App";
+import { parseColorString } from "../utils";
 
 type Props = {
   color: string;
@@ -21,4 +21,9 @@ export function ColorSwatch({ color, withLabel, style, onClick }: Props) {
       {withLabel ? color : ""}
     </div>
   );
+}
+
+function shouldUseBlackForeground(hex: string): boolean {
+  const [r, g, b] = parseColorString(hex);
+  return r * 0.299 + g * 0.587 + b * 0.114 > 186;
 }

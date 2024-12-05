@@ -1,6 +1,6 @@
 import React from "react";
 import mixbox from "mixbox";
-import { rgbToHex } from "./utils";
+import { rgbToHex } from "../utils";
 import { ColorSwatch } from "./ColorSwatch";
 
 type Props = {
