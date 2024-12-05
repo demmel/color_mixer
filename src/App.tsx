@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "./App.css";
 import { ChromePicker } from "react-color";
 import { ColorTable } from "./ColorTable";
-import { ColorSwatch } from "./ColorSwatch";
 import { parseColorString } from "./utils";
+import { Palette } from "./Palette";
 
 export function shouldUseBlackForeground(hex: string): boolean {
   const [r, g, b] = parseColorString(hex);
@@ -28,9 +28,7 @@ function App() {
           <button onClick={() => setBaseColors([...baseColors, color])}>
             Add color
           </button>
-          {baseColors.map((baseColor) => (
-            <ColorSwatch key={baseColor} color={baseColor} withLabel={true} />
-          ))}
+          <Palette colors={baseColors} />
         </div>
       </div>
       <input
