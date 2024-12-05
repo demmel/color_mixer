@@ -50,6 +50,6 @@
     "@types/moment-duration-format": "^2.2.3",
     "@types/react-color": "^3.0.12",
     "gh-pages": "^4.0.0",
-    "typescript": "5.7.2"
+    "typescript": "5.4.5"
   }
 }
