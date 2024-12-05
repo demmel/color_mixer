@@ -76,7 +76,7 @@ function ColorTable({
             display: "flex",
           }}
         >
-          {ratio * 100}%
+          {Math.round(ratio * 100)}%
         </div>
       </div>
       <div style={{ display: "flex", flexDirection: "row" }}>
@@ -148,6 +148,7 @@ function ColorTable({
 function App() {
   const [baseColors, setBaseColors] = useState<string[]>([]);
   const [color, setColor] = useState<string>("#ffffff");
+  const [ratio, setRatio] = useState<number>(0.5);
 
   return (
     <div className="App">
@@ -167,15 +168,19 @@ function App() {
           ))}
         </div>
       </div>
-      <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
-        {[0.1, 0.25, 0.5, 0.75, 0.9].map((ratio) => (
-          <ColorTable
-            colors={baseColors}
-            onClick={(color) => setBaseColors([...baseColors, color])}
-            ratio={ratio}
-          />
-        ))}
-      </div>
+      <input
+        type="range"
+        min={0}
+        max={1}
+        step={0.01}
+        value={ratio}
+        onChange={(e) => setRatio(parseFloat(e.target.value))}
+      />
+      <ColorTable
+        colors={baseColors}
+        onClick={(color) => setBaseColors([...baseColors, color])}
+        ratio={ratio}
+      />
     </div>
   );
 }
