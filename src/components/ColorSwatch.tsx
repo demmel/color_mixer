@@ -1,21 +1,26 @@
 import React from "react";
 import { parseColorString } from "../utils";
 import { useDrag } from "react-dnd";
+import { DraggableType } from "./DragAndDrop";
 
 type Props = {
   color: string;
   withLabel?: boolean;
   style?: React.CSSProperties;
+  ref?: any;
 };
 
 export function ColorSwatch({ color, withLabel, style }: Props) {
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: "color",
-    item: { color },
-    collect: (monitor) => ({
-      isDragging: monitor.isDragging(),
+  const [{ isDragging }, drag] = useDrag(
+    () => ({
+      type: "color",
+      item: { color },
+      collect: (monitor) => ({
+        isDragging: monitor.isDragging(),
+      }),
     }),
-  }));
+    [color]
+  );
 
   return (
     <div

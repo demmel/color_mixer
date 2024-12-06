@@ -6,9 +6,10 @@ import { DraggableType } from "./DragAndDrop";
 type Props = {
   colors: string[];
   onDrop: (color: string) => void;
+  style?: React.CSSProperties;
 };
 
-export function Palette({ colors, onDrop }: Props) {
+export function Palette({ colors, onDrop, style }: Props) {
   const [{ isOver, canDrop }, drop] = useDrop(
     () => ({
       accept: DraggableType.Color,
@@ -24,8 +25,10 @@ export function Palette({ colors, onDrop }: Props) {
   return (
     <div
       style={{
+        ...style,
         display: "flex",
         flexDirection: "row",
+        flexWrap: "wrap",
       }}
     >
       {colors.map((color) => (

@@ -47,9 +47,9 @@ export function ColorTable({ colors, onChoose: onClick, ratio }: Props) {
         >
           <div style={{ display: "flex", flexDirection: "row" }}>
             <div style={{ width: 32, height: 32 }} />
-            {colors.map((color) => (
+            {colors.map((color, i) => (
               <ColorSwatch
-                key={color}
+                key={color + "-h-" + i}
                 color={color}
                 style={{
                   width: 32,
@@ -60,10 +60,10 @@ export function ColorTable({ colors, onChoose: onClick, ratio }: Props) {
               />
             ))}
           </div>
-          {colors.map((color1) => (
+          {colors.map((color1, i) => (
             <div style={{ display: "flex", flexDirection: "row" }}>
               <ColorSwatch
-                key={color1}
+                key={color1 + "-" + i}
                 color={color1}
                 style={{
                   width: 32,
@@ -72,12 +72,12 @@ export function ColorTable({ colors, onChoose: onClick, ratio }: Props) {
                   boxSizing: "border-box",
                 }}
               />
-              {colors.map((color2) => {
+              {colors.map((color2, j) => {
                 const mixed = mixbox.lerp(color1, color2, ratio);
                 const hex = rgbToHex(mixed);
                 return (
                   <ColorSwatch
-                    key={color2}
+                    key={color1 + "-" + color2 + "-" + i + "-" + j}
                     color={hex}
                     style={{ width: 32, height: 32 }}
                   />
