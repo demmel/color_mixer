@@ -79,7 +79,6 @@ export function ColorTable({ colors, onChoose: onClick, ratio }: Props) {
                   <ColorSwatch
                     key={color2}
                     color={hex}
-                    onClick={() => onClick && onClick(hex)}
                     style={{ width: 32, height: 32 }}
                   />
                 );
