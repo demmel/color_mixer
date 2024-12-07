@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/color_mixer/static/css/main.c80ba651.css",
-    "main.js": "/color_mixer/static/js/main.1ef0d917.js",
+    "main.js": "/color_mixer/static/js/main.257d810c.js",
     "static/js/453.762c04be.chunk.js": "/color_mixer/static/js/453.762c04be.chunk.js",
     "index.html": "/color_mixer/index.html",
     "main.c80ba651.css.map": "/color_mixer/static/css/main.c80ba651.css.map",
-    "main.1ef0d917.js.map": "/color_mixer/static/js/main.1ef0d917.js.map",
+    "main.257d810c.js.map": "/color_mixer/static/js/main.257d810c.js.map",
     "453.762c04be.chunk.js.map": "/color_mixer/static/js/453.762c04be.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c80ba651.css",
-    "static/js/main.1ef0d917.js"
+    "static/js/main.257d810c.js"
   ]
 }
