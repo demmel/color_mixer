@@ -24,11 +24,18 @@ export function Palette({ colors, onDrop, style }: Props) {
 
   return (
     <div
+      ref={drop}
       style={{
         ...style,
         display: "flex",
         flexDirection: "row",
         flexWrap: "wrap",
+        alignContent: "flex-start",
+        backgroundColor: canDrop
+          ? isOver
+            ? "rgba(255, 255, 255, 0.75)"
+            : "rgba(255, 255, 255, 0.5)"
+          : "rgba(255, 255, 255, 0)",
       }}
     >
       {colors.map((color) => (
@@ -43,8 +50,6 @@ export function Palette({ colors, onDrop, style }: Props) {
         style={{
           width: 32,
           height: 32,
-          backgroundColor: canDrop ? "rgb(255, 255, 255)" : undefined,
-          opacity: canDrop ? (isOver ? 0.75 : 0.5) : 0.0,
         }}
       />
     </div>
