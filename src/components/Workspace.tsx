@@ -64,12 +64,17 @@ function WorkpaceItem({
   );
 }
 
-export function Workspace() {
-  const [grid, setGrid] = useState<Grid>([
-    [null, null, null],
-    [null, null, null],
-    [null, null, null],
-  ]);
+type Props = {
+  defaultRows: number;
+  defaultCols: number;
+};
+
+export function Workspace({ defaultRows, defaultCols }: Props) {
+  const [grid, setGrid] = useState<Grid>(
+    Array.from({ length: defaultRows }, () =>
+      Array.from({ length: defaultCols }, () => null)
+    )
+  );
 
   const numRows = grid.length;
   const numCols = grid[0].length;
