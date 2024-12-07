@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { DraggableType } from "./DragAndDrop";
 import { useDrop } from "react-dnd";
 import { ColorSwatch } from "./ColorSwatch";
@@ -16,6 +16,8 @@ function WorkpaceItem({
     () => ({
       accept: DraggableType.Color,
       drop: ({ color }: { color: string }) => onDrop(color),
+      canDrop: ({ color: draggingColor }: { color: string }) =>
+        draggingColor !== color,
       collect: (monitor) => ({
         isOver: monitor.isOver(),
         canDrop: monitor.canDrop(),
@@ -26,7 +28,6 @@ function WorkpaceItem({
 
   return (
     <div
-      ref={drop}
       style={{
         position: "relative",
         width: 32,
@@ -34,7 +35,7 @@ function WorkpaceItem({
       }}
     >
       {color ? (
-        <ColorSwatch color={color} style={{ width: 32, height: 32 }} />
+        <ColorSwatch color={color} style={{ width: "100%", height: "100%" }} />
       ) : (
         <div
           style={{
@@ -45,17 +46,20 @@ function WorkpaceItem({
           }}
         />
       )}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          backgroundColor: canDrop ? "rgb(255, 255, 255)" : undefined,
-          opacity: canDrop ? (isOver ? 0.75 : 0.5) : 0.0,
-        }}
-      />
+      {canDrop ? (
+        <div
+          ref={drop}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgb(255, 255, 255)",
+            opacity: isOver ? 0.75 : 0.5,
+          }}
+        />
+      ) : undefined}
     </div>
   );
 }
